@@ -5,6 +5,43 @@ date: "2/16/2021"
 output: html_document
 ---
 
+-  Raw data (anonymized): https://www.dropbox.com/s/lkg75dsvg4b7wvu/Archive%202.zip?dl=0
+
+-  Summary data (for analyses): https://www.dropbox.com/s/x5occ73qkm0gxjt/AnalysisData.csv?dl=0 (updated at 13.29)
+
+# Note on data
+_v2 indicates the alternative measure of performance (based on IRT models)
+_r3 indicates measures of performance in the 3rd round.
+
+IRT model of performance
+Produced ~ 1 + (1|ID) + (1|Word)
+
+# Which theories we can operationalize and test?
+- Conceptual theory
+- Operationalizing in a specific hypothesis
+- Operationalizing in a specific test: DV ~IV1 * IV2
+
+#H1- Teamwork would be more productive than individual work
+	Round 2 better than Round 1
+	Better ideas, but also better motivation (due to accountability)
+Better than any given individual
+Better than the average between individuals
+Better than the best of the 2 individuals
+Better than the pooled performance between the 2 individuals
+
+#H2 - Diverse groups will be more productive as a group than less diverse ones.
+#H3 - Equality bias: more similar groups (in terms of performance) should perform better than less similar groups. BUT IT shouldn’t apply here.
+
+The lingering effects of teamwork
+#H4 - Higher diversity should imply greater increase in performance from round 1 to round3. 
+	. Moderated by similarity?
+#H5 - Diversity will decrease with teamwork
+#H6 - After we’ve collaborated the more we have gained as a team compared to individuals the more we will increase in performance from round 1 to round 3.
+
+More unequal contributions in Year 21, because 
+
+
+
 ```{r}
 
 ```

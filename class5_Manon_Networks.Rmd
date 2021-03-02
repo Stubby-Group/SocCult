@@ -16,7 +16,7 @@ pacman::p_load(tidyverse,
 ```
 
 
-```{r creating an edge dataset???}
+```{r creating an edge dataset form S0_Friends}
 EdgesDataset <- read_csv(
   "class5_Archive/CogSci19S0_NetworkFriends.csv") %>% 
   subset(
@@ -29,6 +29,11 @@ EdgesDataset <- EdgesDataset %>% subset(
 ```
 
 ```{r}
+# Creating a list of unique IDs
+CogSci_2019_nodes <- data.frame(ID=unique(c(
+  EdgesDataset$from,
+  EdgesDataset$to)))
+
 Graph <-
   graph_from_data_frame(d = EdgesDataset,
                         vertices = CogSci_2019_nodes,

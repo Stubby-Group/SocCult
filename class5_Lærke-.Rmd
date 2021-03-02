@@ -12,16 +12,116 @@ pacman::p_load(tidyverse,
                ggraph,
                tidygraph,
                patchwork)
+```
 
-EdgesDataset <- read_csv(
-  "Filename.csv") %>% 
+
+```{r}
+# Loading data
+EdgesDataset_s0friends <- read_csv(
+  "class5_Archive/CogSci19S0_NetworkFriends.csv") %>% 
   subset(
     !is.na(to) & !is.na(from) & !is.na(weight) # removing odd NAs
   )
-
-EdgesDataset <- EdgesDataset %>% subset(
+# Removing trolls
+EdgesDataset_s0friends <- EdgesDataset %>% subset(
   !(to %in% c("fake0", "fake", "100", "1")) & !(from %in% c("fake0", "fake", "100", "1") & !is.na(to) & !is.na(from))
 )
+
+
+# Loading data
+EdgesDataset_s1friends <- read_csv(
+  "class5_Archive/CogSci19S1_NetworkFriends.csv") %>% 
+  subset(
+    !is.na(to) & !is.na(from) & !is.na(weight) # removing odd NAs
+  )
+# Removing trolls
+EdgesDataset_s1friends <- EdgesDataset %>% subset(
+  !(to %in% c("fake0", "fake", "100", "1")) & !(from %in% c("fake0", "fake", "100", "1") & !is.na(to) & !is.na(from))
+)
+
+
+# Loading data
+EdgesDataset_s1fun <- read_csv(
+  "class5_Archive/CogSci19S1_NetworkFun.csv") %>% 
+  subset(
+    !is.na(to) & !is.na(from) & !is.na(weight) # removing odd NAs
+  )
+# Removing trolls
+EdgesDataset_s1fun <- EdgesDataset %>% subset(
+  !(to %in% c("fake0", "fake", "100", "1")) & !(from %in% c("fake0", "fake", "100", "1") & !is.na(to) & !is.na(from))
+)
+
+
+# Loading data
+EdgesDataset_s1studious <- read_csv(
+  "class5_Archive/CogSci19S1_NetworkStudious.csv") %>% 
+  subset(
+    !is.na(to) & !is.na(from) & !is.na(weight) # removing odd NAs
+  )
+# Removing trolls
+EdgesDataset_s1studious <- EdgesDataset %>% subset(
+  !(to %in% c("fake0", "fake", "100", "1")) & !(from %in% c("fake0", "fake", "100", "1") & !is.na(to) & !is.na(from))
+)
+
+
+# Loading data
+EdgesDataset_s1sg <- read_csv(
+  "class5_Archive/CogSci19S1_NetworkStudyGroup.csv") %>% 
+  subset(
+    !is.na(to) & !is.na(from) & !is.na(weight) # removing odd NAs
+  )
+# Removing trolls
+EdgesDataset_s1sg <- EdgesDataset %>% subset(
+  !(to %in% c("fake0", "fake", "100", "1")) & !(from %in% c("fake0", "fake", "100", "1") & !is.na(to) & !is.na(from))
+)
+
+
+# Loading data
+EdgesDataset_s4friends <- read_csv(
+  "class5_Archive/CogSci19S4_NetworkFriends.csv") %>% 
+  subset(
+    !is.na(to) & !is.na(from) & !is.na(weight) # removing odd NAs
+  )
+# Removing trolls
+EdgesDataset_s1sg <- EdgesDataset %>% subset(
+  !(to %in% c("fake0", "fake", "100", "1")) & !(from %in% c("fake0", "fake", "100", "1") & !is.na(to) & !is.na(from))
+)
+
+
+# Loading data
+EdgesDataset_s4fun <- read_csv(
+  "class5_Archive/CogSci19S4_NetworkFun.csv") %>% 
+  subset(
+    !is.na(to) & !is.na(from) & !is.na(weight) # removing odd NAs
+  )
+# Removing trolls
+EdgesDataset_s1sg <- EdgesDataset %>% subset(
+  !(to %in% c("fake0", "fake", "100", "1")) & !(from %in% c("fake0", "fake", "100", "1") & !is.na(to) & !is.na(from))
+)
+
+
+# Loading data
+EdgesDataset_s4studious <- read_csv(
+  "class5_Archive/CogSci19S4_NetworkStudious.csv") %>% 
+  subset(
+    !is.na(to) & !is.na(from) & !is.na(weight) # removing odd NAs
+  )
+# Removing trolls
+EdgesDataset_s1sg <- EdgesDataset %>% subset(
+  !(to %in% c("fake0", "fake", "100", "1")) & !(from %in% c("fake0", "fake", "100", "1") & !is.na(to) & !is.na(from))
+)
+```
+
+
+```{r}
+#Creating list of nodes - creating a list of unique IDs across the 3 datasets
+CogSci_2019_nodes <- data.frame(ID=unique(c(
+  CogSci_2019_n0_edges$from,
+  CogSci_2019_n1_edges$from,
+  CogSci_2019_n4_edges$from,
+  CogSci_2019_n0_edges$to,
+  CogSci_2019_n1_edges$to,
+  CogSci_2019_n4_edges$to)))
 
 Graph <-
   graph_from_data_frame(d = EdgesDataset,

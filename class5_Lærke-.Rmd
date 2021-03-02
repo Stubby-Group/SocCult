@@ -114,18 +114,18 @@ EdgesDataset_s1sg <- EdgesDataset %>% subset(
 
 
 ```{r}
-#Creating list of nodes - creating a list of unique IDs across the 3 datasets
-CogSci_2019_nodes <- data.frame(ID=unique(c(
-  CogSci_2019_n0_edges$from,
-  CogSci_2019_n1_edges$from,
-  CogSci_2019_n4_edges$from,
-  CogSci_2019_n0_edges$to,
-  CogSci_2019_n1_edges$to,
-  CogSci_2019_n4_edges$to)))
+#Creating list of nodes - creating a list of unique IDs on one of the 4th sem data sets
+EdgesDataset_s4friends_nodes <- data.frame(ID=unique(c(
+  EdgesDataset_s4friends$from,
+  EdgesDataset_s4friends$from,
+  EdgesDataset_s4friends$from,
+  EdgesDataset_s4friends$to,
+  EdgesDataset_s4friends$to,
+  EdgesDataset_s4friends$to)))
 
 Graph <-
-  graph_from_data_frame(d = EdgesDataset,
-                        vertices = CogSci_2019_nodes,
+  graph_from_data_frame(d = EdgesDataset_s4friends,
+                        vertices = EdgesDataset_s4friends_nodes,
                         directed = TRUE)
 
 E(Graph)$arrow.mode <- 0
